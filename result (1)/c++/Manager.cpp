@@ -13,12 +13,11 @@ void Manager::run(const char* command)
 	}
 	while (!fin.eof())
 	{
-		/* You must fill here */
 		fin.getline(cmd, 64);
 		char* tmp;
 		tmp = strtok(cmd, " "); //string truncation
 
-		///////////////////LOAD/////////////////////
+		//LOAD
 		if (strcmp(tmp, "LOAD") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
@@ -33,7 +32,7 @@ void Manager::run(const char* command)
 			flog << "============================" << endl;
 		}
 
-		///////////////////BTLOAD/////////////////////
+		//BTLOAD
 		else if (strcmp(tmp, "BTLOAD") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
@@ -48,7 +47,7 @@ void Manager::run(const char* command)
 			flog << "============================" << endl;
 		}
 
-		///////////////////PRINT_ITEMLIST/////////////////////
+		// PRINT_ITEMLIST
 		else if (strcmp(tmp, "PRINT_ITEMLIST") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
@@ -61,7 +60,7 @@ void Manager::run(const char* command)
 			flog << "============================" << endl;
 		}
 
-		///////////////////PRINT_FPTREE/////////////////////
+		///PRINT_FPTREE
 		else if (strcmp(tmp, "PRINT_FPTREE") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
@@ -73,7 +72,7 @@ void Manager::run(const char* command)
 			flog << "============================" << endl;
 		}
 
-		///////////////////PRINT_BPTREE/////////////////////
+		//PRINT_BPTREE
 		else if (strcmp(tmp, "PRINT_BPTREE") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
@@ -92,7 +91,7 @@ void Manager::run(const char* command)
 			flog << "============================" << endl;
 		}
 
-		///////////////////PRINT_CONFIDENCE/////////////////////
+		//PRINT_CONFIDENCE
 		else if (strcmp(tmp, "PRINT_CONFIDENCE") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
@@ -111,7 +110,7 @@ void Manager::run(const char* command)
 			flog << "============================" << endl;
 		}
 
-		///////////////////PRINT_RANGE/////////////////////
+		//PRINT_RANGE
 		else if (strcmp(tmp, "PRINT_RANGE") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
@@ -132,7 +131,7 @@ void Manager::run(const char* command)
 			flog << "============================" << endl;
 		}
 
-		///////////////////SAVE/////////////////////
+		//SAVE
 		else if (strcmp(tmp, "SAVE") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
@@ -147,7 +146,7 @@ void Manager::run(const char* command)
 			flog << "============================" << endl;
 		}
 
-		///////////////////EXIT/////////////////////
+		//EXIT
 		else if (strcmp(tmp, "EXIT") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
@@ -237,7 +236,7 @@ bool Manager::LOAD()
 bool Manager::BTLOAD()
 {
 	ifstream fresult;
-	fresult.open("result.txt"); //result1.txt open
+	fresult.open("result.txt");
 	if (!fresult)
 	{
 		flog << "File Open Error" << endl;
@@ -288,9 +287,10 @@ bool Manager::PRINT_FPTREE() {
 
 	cout << "{StandardItem,Frequency} {Path_Item,Frequency}\n";
 
-	fpgrowth->getHeaderTable()->ascendingIndexTable(); //Sort ascending
+	//Sort ascending
+	fpgrowth->getHeaderTable()->ascendingIndexTable();
 
-	list<pair<int, string>> li = fpgrowth->getHeaderTable()->getindexTable(); //list
+	list<pair<int, string>> li = fpgrowth->getHeaderTable()->getindexTable();
 	for (auto it = li.begin(); it != li.end(); it++) {
 		if ((*it).first >= threshold) {
 			//	fpgrowth.find((*it).second)
