@@ -8,7 +8,6 @@ void Manager::run(const char* command)
 	if(!fin)
 	{
 		flog << "File Open Error" << endl;
-		cout << "File Open Error" << endl;
 		return;
 	}
 	while (!fin.eof())
@@ -21,14 +20,12 @@ void Manager::run(const char* command)
 		if (strcmp(tmp, "LOAD") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
-			cout << "========" << cmd << "========" << endl;
 			if (LOAD()) {
 				printSuccessCode();
 			}
 			else {
 				printErrorCode(100);
 			}
-			cout << "============================" << endl;
 			flog << "============================" << endl;
 		}
 
@@ -36,14 +33,12 @@ void Manager::run(const char* command)
 		else if (strcmp(tmp, "BTLOAD") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
-			cout << "========" << cmd << "========" << endl;
 			if (BTLOAD()) {
 				printSuccessCode();
 			}
 			else {
 				printErrorCode(200);
 			}
-			cout << "============================" << endl;
 			flog << "============================" << endl;
 		}
 
@@ -51,12 +46,11 @@ void Manager::run(const char* command)
 		else if (strcmp(tmp, "PRINT_ITEMLIST") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
-			cout << "========" << cmd << "========" << endl;
 			int start = 0, end = 0;
 			if (!PRINT_ITEMLIST())
+			{
 				printErrorCode(300);
-
-			cout << "============================" << endl;
+			}
 			flog << "============================" << endl;
 		}
 
@@ -64,11 +58,10 @@ void Manager::run(const char* command)
 		else if (strcmp(tmp, "PRINT_FPTREE") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
-			cout << "========" << cmd << "========" << endl;
 			if (!PRINT_FPTREE())
+			{
 				printErrorCode(400);
-
-			cout << "============================" << endl;
+			}
 			flog << "============================" << endl;
 		}
 
@@ -76,7 +69,6 @@ void Manager::run(const char* command)
 		else if (strcmp(tmp, "PRINT_BPTREE") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
-			cout << "========" << cmd << "========" << endl;
 			auto item = strtok(NULL, " ");
 			auto min_str = strtok(NULL, " ");
 			bool error = false;
@@ -85,9 +77,9 @@ void Manager::run(const char* command)
 			auto min = atoi(min_str);
 
 			if (error || !PRINT_BPTREE(item, min))
+			{
 				printErrorCode(500);
-
-			cout << "============================" << endl;
+			}
 			flog << "============================" << endl;
 		}
 
@@ -95,18 +87,19 @@ void Manager::run(const char* command)
 		else if (strcmp(tmp, "PRINT_CONFIDENCE") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
-			cout << "========" << cmd << "========" << endl;
 			auto item = strtok(NULL, " ");
 			auto conf_str = strtok(NULL, " ");
 			bool error = false;
 			if (!(item && conf_str))
+			{
 				error = true;
+			}
 			auto conf = atof(conf_str);
 
 			if (error || !PRINT_CONFIDENCE(item, conf))
+			{
 				printErrorCode(600);
-
-			cout << "============================" << endl;
+			}
 			flog << "============================" << endl;
 		}
 
@@ -114,20 +107,21 @@ void Manager::run(const char* command)
 		else if (strcmp(tmp, "PRINT_RANGE") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
-			cout << "========" << cmd << "========" << endl;
 			auto item = strtok(NULL, " ");
 			auto min_str = strtok(NULL, " ");
 			auto max_str = strtok(NULL, " ");
 			bool error = false;
 			if (!(item && min_str && max_str))
+			{
 				error = true;
+			}
 			auto min = atol(min_str);
 			auto max = atol(max_str);
 
 			if (!PRINT_RANGE(item, min, max))
+			{
 				printErrorCode(700);
-
-			cout << "============================" << endl;
+			}
 			flog << "============================" << endl;
 		}
 
@@ -135,14 +129,13 @@ void Manager::run(const char* command)
 		else if (strcmp(tmp, "SAVE") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
-			cout << "========" << cmd << "========" << endl;
 			if (SAVE()) {
 				printSuccessCode();
 			}
-			else {
+			else 
+			{
 				printErrorCode(800);
 			}
-			cout << "============================" << endl;
 			flog << "============================" << endl;
 		}
 
@@ -150,9 +143,7 @@ void Manager::run(const char* command)
 		else if (strcmp(tmp, "EXIT") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
-			cout << "========" << cmd << "========" << endl;
 			printSuccessCode();
-			cout << "============================" << endl;
 			flog << "============================" << endl;
 			break;
 		}
@@ -171,7 +162,6 @@ bool Manager::LOAD()
 	if (!fmarket)
 	{
 		flog << "File Open Error" << endl;
-		cout << "File Open Error" << endl;
 		return false;
 	}
 
@@ -241,7 +231,6 @@ bool Manager::BTLOAD()
 	if (!fresult)
 	{
 		flog << "File Open Error" << endl;
-		cout << "File Open Error" << endl;
 		return false;
 	}
 
@@ -335,14 +324,11 @@ bool Manager::PRINT_RANGE(char* item, int start, int end) {
 void Manager::printErrorCode(int n) {
 	flog << "ERROR " << n << endl;
 	flog << "=======================" << endl << endl;
-	cout << "ERROR " << n << endl;
-	cout << "=======================" << endl << endl;
 }
 
 //SUCCESS CODE PRINT 
 void Manager::printSuccessCode() {
 	flog << "Success" << endl;
-	cout << "Success" << endl;
 }
 
 bool Manager::SAVE() {
