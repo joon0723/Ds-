@@ -356,5 +356,7 @@ void Manager::printSuccessCode() {
 }
 
 bool Manager::SAVE() {
-
+	// if((fpgrowth -> frequenctPatterns).size() == 0) {
+	// if((fpgrowth -> getFrequentPatterns()))
+	// return fpgrowth -> saveFrequentPatterns();
 }
