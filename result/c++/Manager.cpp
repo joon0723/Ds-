@@ -144,6 +144,7 @@ void Manager::run(const char* command)
 		else if (strcmp(tmp, "SAVE") == 0)
 		{
 			flog << "========" << cmd << "========" << endl;
+			cout << "========" << cmd << "========" << endl;
 			if (SAVE()) {
 				printSuccessCode();
 			}
@@ -151,6 +152,7 @@ void Manager::run(const char* command)
 			{
 				printErrorCode(800);
 			}
+			cout << "============================" << endl;
 			flog << "============================" << endl;
 		}
 
