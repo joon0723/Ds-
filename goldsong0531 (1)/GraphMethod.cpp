@@ -1,6 +1,6 @@
 #include "GraphMethod.h"
 
-bool BFS(Graph* graph, int vertex)
+bool BFS(Graph* graph, int vertex) // BFS use Queue method
 {
 	vector<bool> visit(graph->getSize(), false);
 	map<int, int>* m = new map<int, int>();
@@ -28,7 +28,7 @@ bool BFS(Graph* graph, int vertex)
     return false;
 }
 
-bool DFS(Graph* graph, int vertex)
+bool DFS(Graph* graph, int vertex) // DFS use Stack method
 {
 	vector<bool> visit(graph->getSize(), false);
 	map<int, int>* m = new map<int, int>();
@@ -60,7 +60,7 @@ bool DFS(Graph* graph, int vertex)
     return true;
 }
 
-bool DFS_R(Graph* graph, vector<bool>* visit, int vertex)
+bool DFS_R(Graph* graph, vector<bool>* visit, int vertex) // DFS_R = recursive calling of a function
 {
 	map<int, int>* m = new map<int, int>();
 	graph->getAdjacentEdgesWithoutDir(vertex, m);
@@ -82,7 +82,7 @@ bool DFS_R(Graph* graph, vector<bool>* visit, int vertex)
     return true;
 }
 
-void insertsort(vector<pair<int, pair<int, int>>>::iterator low, vector<pair<int, pair<int, int>>>::iterator high)
+void insertsort(vector<pair<int, pair<int, int>>>::iterator low, vector<pair<int, pair<int, int>>>::iterator high) // insertsoet Algorithm
 {
     for(auto it=low; it!=high+1; it++)
     {
@@ -98,7 +98,7 @@ void insertsort(vector<pair<int, pair<int, int>>>::iterator low, vector<pair<int
     }
 }
 
-void quicksort(vector<pair<int, pair<int, int>>>::iterator low, vector<pair<int, pair<int, int>>>::iterator high)
+void quicksort(vector<pair<int, pair<int, int>>>::iterator low, vector<pair<int, pair<int, int>>>::iterator high) // quicksort Algorithm
 {
     if (low<high)
         if (high-low+1 <= 6)
@@ -134,7 +134,7 @@ void quicksort(vector<pair<int, pair<int, int>>>::iterator low, vector<pair<int,
         }
 }
 
-bool Kruskal(Graph* graph)
+bool Kruskal(Graph* graph) // Kruskal Algorithm
 {
 	map<int, int>* m = new map<int, int>();
     vector<pair<int, pair<int, int> > > e;
@@ -200,7 +200,7 @@ bool Kruskal(Graph* graph)
     return true;
 }
 
-bool Dijkstra(Graph* graph, int vertex)
+bool Dijkstra(Graph* graph, int vertex) // Dijkstra Algorithm
 {
     vector<int> dist(graph->getSize(), 1e+9);
     vector<bool> visit(graph->getSize(), false);
@@ -262,7 +262,7 @@ bool Dijkstra(Graph* graph, int vertex)
     return true;
 }
 
-bool Bellmanford(Graph* graph, int s_vertex, int e_vertex)
+bool Bellmanford(Graph* graph, int s_vertex, int e_vertex) // Bellmanford Algorithm
 {
     vector<int> dist(graph->getSize(), 1e+9);
     vector<int> parent(graph->getSize(), -1);
@@ -329,7 +329,7 @@ bool Bellmanford(Graph* graph, int s_vertex, int e_vertex)
     return true;
 }
 
-bool FLOYD(Graph* graph)
+bool FLOYD(Graph* graph) // FLOYD Algorithm
 {
     int v = graph->getSize(); 
     vector<vector<int>> dist(v, vector<int>(v, 1e+9));
