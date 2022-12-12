@@ -34,7 +34,7 @@ void ListGraph::insertEdge(int from, int to, int weight)
 	m_List_nodir[to].insert({from, weight});
 }
 
-bool ListGraph::printGraph()
+bool ListGraph::printGraph() // Print result
 {
 	cout << "======== PRINT ========" << endl;
 
