@@ -79,7 +79,7 @@ void Manager::run(const char* command_txt){
 		{
 			if (!mFLOYD()) printErrorCode(900);
 		}
-		else if(parsed[0] == "EXIT")
+		else if(parsed[0] == "EXIT") // Exit result
 		{
 			cout << "======= EXIT ========" << endl;
 			cout << "Success" << endl;
@@ -89,7 +89,7 @@ void Manager::run(const char* command_txt){
 	fin.close();
 }
 
-bool Manager::LOAD(const char* filename)
+bool Manager::LOAD(const char* filename) // Load manager
 {
     ifstream input_file;
 	input_file.open(filename);
@@ -132,14 +132,14 @@ bool Manager::LOAD(const char* filename)
     return true;
 }
 
-bool Manager::PRINT()
+bool Manager::PRINT() // Print manager
 {
 	if(graph->printGraph())
 		return true;
 	return false;
 }
 
-bool Manager::mBFS(int vertex)
+bool Manager::mBFS(int vertex) // BFS manager
 {
 	if (graph->getSize() <= vertex)
 		return false;
@@ -151,7 +151,7 @@ bool Manager::mBFS(int vertex)
     return true;
 }
 
-bool Manager::mDFS(int vertex)
+bool Manager::mDFS(int vertex) // DFS manager
 {
 	if (graph->getSize() <= vertex)
 		return false;
@@ -164,7 +164,7 @@ bool Manager::mDFS(int vertex)
 }
 
 
-bool Manager::mDFS_R(int vertex)
+bool Manager::mDFS_R(int vertex) // DFS_R manager
 {
 	if (graph->getSize() <= vertex)
 		return false;
@@ -177,7 +177,7 @@ bool Manager::mDFS_R(int vertex)
 	return true;
 }
 
-bool Manager::mDIJKSTRA(int vertex)
+bool Manager::mDIJKSTRA(int vertex) // Dijkstra manager
 {
 	if (graph->getSize() <= vertex)
 		return false;
@@ -189,22 +189,22 @@ bool Manager::mDIJKSTRA(int vertex)
 	return true;
 }
 
-bool Manager::mKRUSKAL()
+bool Manager::mKRUSKAL() // Kruskal manager
 {
 	return Kruskal(graph);
 }
 
-bool Manager::mBELLMANFORD(int s_vertex, int e_vertex)
+bool Manager::mBELLMANFORD(int s_vertex, int e_vertex) // Bellmanford manager
 {
 	return Bellmanford(graph, s_vertex, e_vertex);
 }
 
-bool Manager::mFLOYD()
+bool Manager::mFLOYD() // FLOYD manager
 {
 	return FLOYD(graph);
 }
 
-void Manager::printErrorCode(int n)
+void Manager::printErrorCode(int n) // error code manager
 {
 	cout<<"======== ERROR ========"<<endl;
 	cout<<n<<endl;
